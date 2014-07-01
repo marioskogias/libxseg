@@ -191,6 +191,12 @@ struct xseg_task {
 	xqindex __alloced_deps;
 };
 
+struct xseg_trace {
+    int64_t trace_id;
+    int64_t span_id;
+    int64_t parent_span_id;
+};
+
 /* OPS */
 #define X_PING      0
 #define X_READ      1
@@ -262,6 +268,7 @@ struct xseg_request {
 	uint64_t priv;
 	struct timeval timestamp;
 	uint64_t elapsed;
+    struct xseg_trace req_trace;
 };
 
 struct xseg_shared {
